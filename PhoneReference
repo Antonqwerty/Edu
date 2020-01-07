@@ -1,0 +1,142 @@
+import java.util.ArrayList;
+
+public class PhoneReference {
+    /**
+     * создается коллекция эррэй лист
+     */
+    ArrayList<Person> ref = new ArrayList<>();
+
+    /**
+     *
+     * @param s добавление новой персоны в коллекцию
+     */
+    void add(Person s) {
+        ref.add(s);
+    }
+
+    /**
+     *
+     * @param num удаление одного абонента из справочника
+     */
+    void remove(int num) {
+        ref.remove(num - 1);
+    }
+
+    /**
+     * удаление всех контатков
+     */
+    void removeAll() {
+        ref.clear();
+    }
+
+    /**
+     * показывает всех контатков занесенных в справочник
+     */
+    void showAll() {
+        System.out.println("Список:");
+        if (ref.size() == 0) {
+            System.out.println("Empty");
+        }
+        for (int i = 0; i < ref.size(); i++) {
+            printPerson(i);
+        }
+        System.out.println();
+
+    }
+
+    /**
+     *
+     * @param i перменная для цикла
+     * выводим распечатку контакта в отдельный метод
+     */
+    void printPerson(int i) {
+        System.out.println((i + 1) + ". ID - " + (ref.get(i)).getFio() + ", age - " + ref.get(i).getAge() + ", phone - "
+                + ref.get(i).getNumber());
+    }
+
+    /**
+     * @param age возраст
+     * метод ищет по возрасту
+     */
+    void findByAge(int age) {
+        System.out.println("все пользователи с возрастом:" + age + ":");
+        boolean flag = false;
+        for (int i = 0; i < ref.size(); i++) {
+            if (ref.get(i).getAge() == age) {
+                printPerson(i);
+                flag = true;
+            }
+        }
+        if (flag == false) {
+            System.out.println("not found");
+        }
+    }
+
+    /**
+     *
+     * @param fio фио контакта
+     * метод ищет по фио
+     */
+    void findByFio(String fio) {
+        System.out.println("All contacts with inserted name/id");
+        boolean flag = false;
+        for (int i = 0; i < ref.size(); i++) {
+            if (ref.get(i).getFio().contains(fio)) {
+                printPerson(i);
+                flag = true;
+            }
+        }
+        if (flag == false) {
+            System.out.println("not found");
+        }
+        System.out.println("\n");
+    }
+
+    /**
+     *
+     * @param phone номер абонента
+     * метод ищет по номеру абонента
+     */
+    void findByPhoneNumber(String phone) {
+        //int test = Integer.parseInt(phone);
+        System.out.println("All contacts with inserted number");
+        boolean flag = false;
+        for (int i = 0; i < ref.size(); i++) {
+            if (ref.get(i).getNumber().contains(phone)) {
+                printPerson(i);
+                flag = true;
+            }
+        }
+        if (flag == false) {
+            System.out.println("not found");
+        }
+        System.out.println("\n");
+    }
+
+    /**
+     *
+     * @param num порядковый номер в коллекци
+     * @param person контакт записанный в коллекцию
+     * метод обновляет номер и данные о перосне в коллекции
+     */
+    void updatePerson(int num, Person person) {
+        ref.get(num - 1).setFio(person.getFio());
+        ref.get(num - 1).setAge(person.getAge());
+        ref.get(num - 1).setNumber(person.getNumber());
+        System.out.println("updated");
+    }
+
+    /**
+     * печатает главное меню
+     */
+    void menu() {
+        System.out.println("Press 1 to show all contacts");
+        System.out.println("Press 2 to add person");
+        System.out.println("Press 3 to delete person");
+        System.out.println("Press 4 to delete all contacts");
+        System.out.println("Press 5 to find contact by age");
+        System.out.println("Press 6 to find contact by FIO");
+        System.out.println("Press 7 to find contact by Phone Number");
+        System.out.println("Press 8 to update contact");
+    }
+}
