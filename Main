@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class Main {
+    /**
+     * создаем объект справочника
+     */
+    private static PhoneReference phoneReference = new PhoneReference();
+    /**
+     * создаем объект сканнера
+     */
+    private static Scanner s = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int action = 0;
+        while (true) {
+            phoneReference.menu();
+
+            action = s.nextInt();
+
+            switch (action) {
+                case 1:
+                    phoneReference.showAll();
+                    break;
+                case 2:
+                    System.out.print("Введите фио: ");
+                    s.nextLine();
+                    String fio = s.nextLine();
+                    System.out.print("Введите телефон: ");
+                    String phone = s.nextLine();
+                    System.out.print("Введите age: ");
+                    int age = s.nextInt();
+                    Person person = new Person(fio, phone, age); // todo: Нужны пояснения почему тут персон-персон а внизу просто персон
+                    phoneReference.add(person);
+                    break;
+                case 3:
+                    System.out.println("Enter number: ");
+                    int num = s.nextInt();
+                    phoneReference.remove(num);
+                    break;
+                case 4:
+                    phoneReference.removeAll();
+                    System.out.println("removed");
+                    break;
+                case 5:
+                    System.out.println("Enter age: ");
+                    age = s.nextInt();
+                    phoneReference.findByAge(age);
+                    break;
+                case 6:
+                    System.out.println("Enter name/id: ");
+                    s.nextLine();
+                    fio = s.nextLine();
+                    phoneReference.findByFio(fio);
+                    break;
+                case 7:
+                    System.out.println("Enter the phone number: ");
+                    s.nextLine();
+                    phone = s.nextLine();
+                    phoneReference.findByPhoneNumber(phone);
+                    break;
+                case 8:
+                    System.out.println("Введите номер обновляемого:");
+                    num = s.nextInt();
+                    System.out.print("Введите фио: ");
+                    s.nextLine();
+                    fio = s.nextLine();
+                    System.out.print("Введите телефон: ");
+                    phone = s.nextLine();
+                    System.out.print("Введите age: ");
+                    age = s.nextInt();
+                    person = new Person(fio, phone, age); // todo: Нужны пояснения почему тут просто персон
+                    phoneReference.updatePerson(num, person);
+                    break;
+            }
+        }
+    }
+}
