@@ -1,0 +1,61 @@
+public class Person {
+    /**
+     * объявляются свойства класса Person
+     */
+    private String fio;
+    private String number;
+    private int age;
+
+    /**
+     * геттер
+     * @return возвращает ФИО
+     */
+    public String getFio() {
+        return fio;
+    }
+
+    /**
+     *
+     * @param fio - фио абонента в справочнике
+     */
+    public void setFio(String fio) {
+        this.fio = fio;
+    }
+
+    /**
+     *
+     * @return возвращат номер абонента
+     */
+    public String getNumber() {
+        return number;
+    }
+
+    /**
+     *
+     * @param number - номер абонента
+     */
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    /**
+     * коструктор персон
+     * @param fio фио
+     * @param number номер
+     * @param age возраст
+     */
+    public Person(String fio, String number, int age) {
+        this.fio = fio;
+        this.number = number;
+        this.age = age;
+    }
+}
+
